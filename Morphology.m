@@ -71,5 +71,23 @@ classdef Morphology
             imshow (res);
         end
 
+        function res = bottomHat (obj, img, radius)
+            
+            obj.structuringElement = strel ('disk', radius); 
+            res = imbothat (img, obj.structuringElement);
+            
+            figure;
+            imshow  (res);
+        end
+            
+        function res = topHat (obj, img, radius)
+            
+            obj.structuringElement = strel ('disk', radius); 
+            res = imtophat (img, obj.structuringElement);
+            
+            figure;
+            imshow  (res);
+        end
+        
     end
 end
