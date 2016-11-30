@@ -4,9 +4,10 @@ close all
 
 %% Image Reading
 
-imgReaded = imread ('ean-13.jpg');
-imgGray = rgb2gray (imgReaded);
-img = im2double (imgGray);
+imgReaded = imread ('ean-13-3.png');
+%imgReaded = rgb2gray (imgReaded);
+img = im2double (imgReaded);
+figure, imshow (img);
 
 %%      Filtering
 
@@ -43,10 +44,17 @@ midx = round (x/2);
 imgRescaled = imgMorph (midx:midx, yinit:yend);
 figure, imshow (imgRescaled);
 
-imgRescaled = imresize (imgRescaled, [1 95]);
+imgRescaled = imresize (imgRescaled, [1 10*95]);
 figure, imshow (imgRescaled);
 
-%%  BarCode Decodificaton
+imgBits = zeros (95);
+for i=1:95
+    imgBits(1,i) = imgRescaled(1, 10*(i-1)+5);
+end;
+
+imgRescaled = imgBits(1,:);
+
+%%  BarCode Decodification
 
 % Check C1
 
@@ -75,7 +83,7 @@ digit = digit + 7;
 
 C2 = imgRescaled (digit:digit+4);
 digit = digit + 5;
-  if (C2 ~= [1 0 1 0 1])
+  if (C2 ~= [0 1 0 1 0])
     disp ('Error on C2');   
   end;
 
@@ -91,3 +99,21 @@ ean13 (12) = EAN13digits(imgRescaled(digit: digit+6));
 digit = digit + 7;
 ean13 (13) = EAN13digits(imgRescaled(digit: digit+6));
 digit = digit + 7;
+
+%% Check Digit
+    
+mult = [3 1 3 1 3 1 3 1 3 1 3 1];
+
+checkDigit = ean13 (2:13).*mult;
+checkDigit = sum(checkDigit);
+
+sub = ceil(checkDigit / 10) * 10;
+checkDigit = sub - checkDigit;
+
+
+ean13(1) = checkDigit;
+
+ean13str = mat2str (ean13);
+
+disp ('O código é ');
+disp (ean13str);
