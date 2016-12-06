@@ -4,8 +4,8 @@ close all
 
 %% Image Reading
 
-imgReaded = imread ('ean-13-3.png');
-%imgReaded = rgb2gray (imgReaded);
+imgReaded = imread ('ean-13.png');
+imgReaded = rgb2gray (imgReaded);
 img = im2double (imgReaded);
 figure, imshow (img);
 
