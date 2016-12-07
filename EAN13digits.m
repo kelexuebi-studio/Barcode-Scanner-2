@@ -1,80 +1,80 @@
-function out = EAN13digits( vector7)
+function [number, code] = EAN13digits( vector7)
 
 
     
         if isequal(vector7, [0 0 0 1 1 0 1])
-            out = 0; return;
-        elseif isequal(vector7, [0 1 1 0 0 1 1])
-            out = 0;return;
+            number = 0; code = 1; return;
+        elseif isequal(vector7, [0 1 0 0 1 1 1])
+            number = 0; code = 2; return;
         elseif isequal(vector7, [1 1 1 0 0 1 0])
-            out = 0;return;
+            number = 0; code = 3; return;
             
         elseif isequal(vector7, [0 0 1 1 0 0 1])
-            out = 1;return;
+            number = 1; code = 1; return;
         elseif isequal(vector7, [0 1 1 0 0 1 1])
-            out = 1;return;
+            number = 1; code = 2; return;
         elseif isequal(vector7, [1 1 0 0 1 1 0])
-            out = 1;return;
+            number = 1; code = 3; return;
             
         elseif isequal(vector7, [0 0 1 0 0 1 1])
-            out = 2;return;
+            number = 2; code = 1; return;
         elseif isequal(vector7, [0 0 1 1 0 1 1])
-            out = 2;return;
+            number = 2; code = 2; return;
         elseif isequal(vector7, [1 1 0 1 1 0 0])
-            out = 2;return;
+            number = 2; code = 3; return;
         
         elseif isequal(vector7, [0 1 1 1 1 0 1])
-            out= 3; return;
+            number= 3;  code = 1; return;
         elseif isequal(vector7, [0 1 0 0 0 0 1])
-            out = 3; return;
+            number = 3; code = 2; return;
         elseif isequal(vector7, [1 0 0 0 0 1 0])
-            out = 3; return;
+            number = 3; code = 3; return;
         
         elseif isequal(vector7, [0 1 0 0 0 1 1])
-            out = 4; return;
+            number = 4;  code = 1; return;
         elseif isequal(vector7, [0 0 1 1 1 0 1])
-            out = 4; return;
+            number = 4; code = 2; return;
         elseif isequal(vector7, [1 0 1 1 1 0 0])
-            out = 4; return;
+            number = 4; code = 3; return;
             
         elseif isequal(vector7, [0 1 1 0 0 0 1])
-            out = 5; return;
+            number = 5;  code = 1; return;
         elseif isequal(vector7, [0 1 1 1 0 0 1])
-            out = 5; return;
+            number = 5; code = 2; return;
         elseif isequal(vector7, [1 0 0 1 1 1 0])
-            out = 5; return;
+            number = 5; code = 3; return;
             
         elseif isequal(vector7, [0 1 0 1 1 1 1])
-            out = 6; return;
+            number = 6;  code = 1; return;
         elseif isequal(vector7, [0 0 0 0 1 0 1])
-            out = 6; return;
+            number = 6; code = 2; return;
         elseif isequal(vector7, [1 0 1 0 0 0 0])
-            out = 6; return;
+            number = 6; code = 3; return;
             
         elseif isequal(vector7, [0 1 1 1 0 1 1])
-            out = 7; return;
+            number = 7;  code = 1; return;
         elseif isequal(vector7, [0 0 1 0 0 0 1])
-            out = 7; return;
+            number = 7; code = 2; return;
         elseif isequal(vector7, [1 0 0 0 1 0 0])
-            out = 7; return;
+            number = 7; code = 3; return;
             
         elseif isequal(vector7, [0 1 1 0 1 1 1])
-            out = 8; return;
+            number = 8;  code = 1; return;
         elseif isequal(vector7, [0 0 0 1 0 0 1])
-            out = 8; return;
+            number = 8; code = 2; return;
         elseif isequal(vector7, [1 0 0 1 0 0 0])
-            out = 8; return;
+            number = 8; code = 3; return;
             
         elseif isequal(vector7, [0 0 0 1 0 1 1])
-            out = 9; return;
+            number = 9;  code = 1; return;
         elseif isequal(vector7, [0 0 1 0 1 1 1])
-            out = 9; return;
+            number = 9; code = 2; return;
         elseif isequal(vector7, [1 1 1 0 1 0 0])
-            out = 9; return;
+            number = 9; code = 3; return;
         
-        else out = -2; return; 
+        else number = -2;  code = 0; return; 
             
-    end;
+        end;
 
 end
 
